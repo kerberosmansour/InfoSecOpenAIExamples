@@ -46,20 +46,18 @@ def generate_text():
     closest_area = get_most_similar_area(question_embedding, embeddings)
 
     # Send the question and the closest area to the LLM to get an answer
-    prompt = f"Answer the following question based on this area of knowledge: {closest_area}\nQuestion: {prompt}"
+    messages = [
+        {"role": "system", "content": "Assistant is a large language model trained by OpenAI."},
+        {"role": "user", "content": f"Answer the following question based on this area of knowledge: {closest_area}\nQuestion: {prompt}"}
+    ]
 
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=1000,
-        n=1,
-        stop=None,
-        temperature=0.7,
+    response = openai.ChatCompletion.create(
+        engine="gpt-35-turbo",
+        messages=messages,
     )
 
-    answer = response.choices[0].text.strip()
+    answer = response.choices[0].message['content'].strip()
     result = f"Answer: {answer} Closest Area: {closest_area}"
-
     return jsonify({"response": result})
 
 if __name__ == "__main__":
