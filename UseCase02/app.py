@@ -7,6 +7,7 @@ from flask_cors import CORS
 import openai
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -59,8 +60,9 @@ def generate_text():
     answer = response.choices[0].message['content'].strip()
     table = closest_area.to_frame().transpose().to_html(classes='table table-bordered', index=False)
     result = f"Answer: {answer}"
-    return jsonify({"response": result})
-    # return jsonify({"response": result, "table": table})
+    print(table)
+    timestamp = datetime.now().strftime("%I:%M:%S %p")
+    return jsonify({"response": result, "table": table, "timestamp": timestamp})
 
 
 if __name__ == "__main__":
