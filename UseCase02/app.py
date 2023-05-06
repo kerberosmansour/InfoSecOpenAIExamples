@@ -52,15 +52,15 @@ def generate_text():
     ]
 
     response = openai.ChatCompletion.create(
-        engine="gpt-35-turbo",
+        model="gpt-3.5-turbo",
         messages=messages,
     )
     
     answer = response.choices[0].message['content'].strip()
     table = closest_area.to_frame().transpose().to_html(classes='table table-bordered', index=False)
     result = f"Answer: {answer}"
-    print(table)
-    return jsonify({"response": result, "table": table})
+    return jsonify({"response": result})
+    # return jsonify({"response": result, "table": table})
 
 
 if __name__ == "__main__":
