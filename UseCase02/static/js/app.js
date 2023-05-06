@@ -15,10 +15,13 @@ function processResponse(response) {
   return formattedResponse;
 }
 
-function displayMessage(timestamp, role, message) {
+function displayMessage(timestamp, role, message, table = null) {
   const messageElement = document.createElement("div");
   messageElement.classList.add("message");
   messageElement.innerHTML = `<span class="timestamp">${timestamp}</span> <span class="${role}">${role}: </span> ${message}`;
+  if (table) {
+    messageElement.innerHTML += `<br>${table}`;
+  }
   chatMessages.appendChild(messageElement);
   // Re-highlight any code snippets in the new message
   Prism.highlightAllUnder(chatMessages);
@@ -26,6 +29,9 @@ function displayMessage(timestamp, role, message) {
 
 
 function fetchAnswer(question) {
+  // Add the spinner next to the send button
+  sendBtn.insertAdjacentHTML('afterend', '<div id="loading-spinner" class="text-center mt-3"><div class="spinner"></div></div>');
+
   fetch("/api/generate-text", {
       method: "POST",
       headers: {
@@ -37,12 +43,27 @@ function fetchAnswer(question) {
       .then((data) => {
           const timestamp = data.timestamp;
           const formattedResponse = processResponse(data.response);
+
+          // Hide the loading spinner and remove it from the DOM
+          const spinner = document.getElementById("loading-spinner");
+          spinner.classList.add("d-none");
+          spinner.remove();
+
           displayMessage(timestamp, "assistant", formattedResponse + "<br>" + data.table);
+          tableContent.innerHTML = data.table;
       })
       .catch((error) => {
           console.error("Error fetching answer:", error);
+
+          // Hide the loading spinner and remove it from the DOM in case of an error
+          const spinner = document.getElementById("loading-spinner");
+          spinner.classList.add("d-none");
+          spinner.remove();
       });
 }
+
+
+
 
 sendBtn.addEventListener("click", () => {
   const question = userInput.value.trim();

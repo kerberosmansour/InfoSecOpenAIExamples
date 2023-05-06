@@ -4,40 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfoSec Chat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3+5/zftU7LONH6sA1Df1eJxg6TgDp9" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/css/main.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-          // Autoload all necessary Prism.js languages
-          Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/';
-        });
-    </script>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center mt-5">InfoSec Chat</h1>
-        <div class="chat-container mt-4">
-            <div class="card">
-                <div class="card-body chat-messages" id="chat-messages"></div>
-            </div>
-            <div class="input-group chat-input mt-3">
-                <input type="text" id="user-input" class="form-control" placeholder="Type your infosec question here...">
-                <div class="input-group-append">
-                    <button id="send-btn" class="btn btn-primary">Send</button>
-                </div>
-            </div>
-        </div>
-        <div class="table-container mt-4">
-            <div class="table-responsive table-content" id="table-content"></div>
+    <div class="chat-container">
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your infosec question here...">
+            <button id="send-btn">Send</button>
         </div>
     </div>
+    <div class="table-container">
+        <div class="table-content" id="table-content"></div>
+    </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3+5/zftU7LONH6sA1Df1eJxg6TgDp9" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-IKdvS6Gd1gr9pjZ10zD2hGmFFwNrsdGtS7NT4PI4F1pto5yi1g5z9X5Z5z5z5DaC" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-M97l7+I6gwG//La6WhD3JXSOry7URsOzilKL8D7G+3vxlFFPf7/ZNPS58do8rs7F" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
     <script src="/static/js/app.js"></script>
 </body>
 </html>

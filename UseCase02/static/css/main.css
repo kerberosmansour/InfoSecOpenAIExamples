@@ -4,20 +4,26 @@ body {
   padding: 0;
 }
 
+.container {
+  margin-top: 2rem;
+}
+
 .chat-container {
-  max-width: 800px;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
 }
 
 .chat-messages {
   max-height: 500px;
   overflow-y: auto;
   padding: 1rem;
+  background-color: #f8f9fa;
 }
 
 .chat-input {
   display: flex;
+  background-color: #ffffff;
 }
 
 input[type="text"] {
@@ -41,8 +47,7 @@ button:hover {
 }
 
 .table-container {
-  max-width: 800px;
-  margin: 2rem auto;
+  margin: 2rem 0;
   overflow: hidden;
 }
 
@@ -73,4 +78,20 @@ pre {
 
 code {
   font-family: "Courier New", monospace;
+}
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
