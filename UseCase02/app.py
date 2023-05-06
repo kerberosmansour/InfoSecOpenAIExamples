@@ -52,17 +52,20 @@ def generate_text():
     # Send the question and the closest area to the LLM to get an answer
     messages = [
         {"role": "system", "content": "Assistant is a large language model trained by OpenAI."},
-        {"role": "user", "content": f"Answer the following question based on this area of knowledge: {closest_area}\nQuestion: {prompt}"}
+        {"role": "user", "content": f"Answer the following question based on this area of knowledge: {closest_area} delimit any code snippet with three backticks \nQuestion: {prompt}"}
     ]
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
     )
-
+    
     answer = response.choices[0].message['content'].strip()
-    result = f"Answer: {answer} Closest Area: {closest_area}"
-    return jsonify({"response": result})
+    table = closest_area.to_frame().transpose().to_html(classes='table table-bordered', index=False)
+    result = f"Answer: {answer}"
+    print(table)
+    return jsonify({"response": result, "table": table})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
