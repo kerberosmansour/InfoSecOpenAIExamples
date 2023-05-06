@@ -18,23 +18,35 @@ function processResponse(response) {
 
 function displayMessage(timestamp, role, message, data) {
   const messageElement = document.createElement("div");
-  messageElement.classList.add("message");
-  messageElement.innerHTML = `<span class="timestamp">${timestamp}</span> <span class="${role}">${role}: </span> ${message}`;
+  messageElement.classList.add("message", role);
+  messageElement.innerHTML = `
+    <div class="message-card">
+      <span class="timestamp">${timestamp}</span>
+      <span class="${role}-label">${role}: </span>
+      ${message}
+    </div>`;
   chatMessages.appendChild(messageElement);
 
   if (data) {
     const tableElement = document.createElement("div");
     tableElement.classList.add("table-responsive", "bg-light", "shadow", "p-3", "rounded", "mt-3");
-    tableElement.innerHTML = `
-      <p>This content was found at the following section of the following document:</p>
-      <a href="${data.link}" target="_blank">${data.name} ${data.section}</a>
-    `;
+  
+    const link = data[0].link;
+    const text = `The above answer was based on the ${data[2].link} section of ${data[1].link}`;
+  
+    const anchor = document.createElement("a");
+    anchor.href = link;
+    anchor.target = "_blank";
+    anchor.textContent = text;
+  
+    tableElement.appendChild(anchor);
     chatMessages.appendChild(tableElement);
   }
 
   // Re-highlight any code snippets in the new message
   Prism.highlightAllUnder(chatMessages);
 }
+
 
 
 function fetchAnswer(question) {

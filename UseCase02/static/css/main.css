@@ -22,7 +22,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   overflow-y: auto;
-  max-height: 400px;
+  max-height: 1000px;
   margin-bottom: 1rem;
 }
 
@@ -57,4 +57,26 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.message-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.user .message-card {
+  margin-left: auto;
+  background-color: #e3f2fd;
+  height: 100%;
+}
+
+.assistant .message-card {
+  margin-right: auto;
+  background-color: #c8e6c9;
+}
+
 

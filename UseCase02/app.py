@@ -15,6 +15,9 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 app = Flask(__name__)
 CORS(app)
 
+script_directory = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_directory)
+
 df = pd.read_parquet('url_contents_embedded.parquet')
 # Read the data from your DataFrame
 embeddings = np.stack(df["ada_v2_embedding"].to_numpy())
@@ -58,9 +61,12 @@ def generate_text():
     )
     
     answer = response.choices[0].message['content'].strip()
-    table = closest_area[['link', 'name', 'section']].to_frame().transpose().to_html(classes='table table-striped', index=False, columns=['link', 'name', 'section'])
+    # table = closest_area[['link', 'name', 'section']].to_frame().transpose().to_html(classes='table table-striped', index=False, columns=['link', 'name', 'section'])
+    table = [dict(zip(['link', 'name', 'section'], row)) for _, row in closest_area[['link', 'name', 'section']].to_frame().iterrows()]
+
+
     result = f"Answer: {answer}"
-    print(answer)
+    print(table)
     timestamp = datetime.now().strftime("%I:%M:%S %p")
     return jsonify({"response": result, "table": table, "timestamp": timestamp})
 
