@@ -58,7 +58,7 @@ def generate_text():
     )
     
     answer = response.choices[0].message['content'].strip()
-    table = closest_area.to_frame().transpose().to_html(classes='table table-bordered', index=False)
+    table = closest_area[['link', 'name', 'section']].to_frame().transpose().to_html(classes='table table-bordered', index=False)
     result = f"Answer: {answer}"
     print(table)
     timestamp = datetime.now().strftime("%I:%M:%S %p")

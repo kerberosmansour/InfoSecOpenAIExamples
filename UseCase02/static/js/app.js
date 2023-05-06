@@ -10,7 +10,7 @@ function processResponse(response) {
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
           .trim();
-      return `<code>${escapedCode}</code>`;
+      return `<pre><code>${escapedCode}</code></pre>`;
   });
   return formattedResponse;
 }
@@ -20,7 +20,10 @@ function displayMessage(timestamp, role, message) {
   messageElement.classList.add("message");
   messageElement.innerHTML = `<span class="timestamp">${timestamp}</span> <span class="${role}">${role}: </span> ${message}`;
   chatMessages.appendChild(messageElement);
+  // Re-highlight any code snippets in the new message
+  Prism.highlightAllUnder(chatMessages);
 }
+
 
 function fetchAnswer(question) {
   fetch("/api/generate-text", {
