@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfoSec Chat</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl7/1L_dstPt3+5/zftU7LONH6sA1Df1eJxg6TgDp9" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism.min.css" rel="stylesheet" />
+    <!-- Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="/static/css/main.css" rel="stylesheet" />
 </head>
 <body>
@@ -14,7 +18,9 @@
             <div class="chat-messages" id="chat-messages"></div>
             <div class="chat-input bg-white">
                 <input type="text" id="user-input" placeholder="Type your infosec question here...">
-                <button id="send-btn" class="btn btn-primary">Send</button>
+                <button id="send-btn" class="btn btn-primary">
+                  <i class="material-icons">send</i>
+                </button>
             </div>
         </div>
         <div class="table-container mt-5 ms-5 d-none">

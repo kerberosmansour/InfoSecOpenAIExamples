@@ -16,16 +16,19 @@ function processResponse(response) {
   return formattedResponse;
 }
 
-function displayMessage(timestamp, role, message, table) {
+function displayMessage(timestamp, role, message, data) {
   const messageElement = document.createElement("div");
   messageElement.classList.add("message");
   messageElement.innerHTML = `<span class="timestamp">${timestamp}</span> <span class="${role}">${role}: </span> ${message}`;
   chatMessages.appendChild(messageElement);
 
-  if (table) {
+  if (data) {
     const tableElement = document.createElement("div");
-    tableElement.classList.add("table-responsive");
-    tableElement.innerHTML = table;
+    tableElement.classList.add("table-responsive", "bg-light", "shadow", "p-3", "rounded", "mt-3");
+    tableElement.innerHTML = `
+      <p>This content was found at the following section of the following document:</p>
+      <a href="${data.link}" target="_blank">${data.name} ${data.section}</a>
+    `;
     chatMessages.appendChild(tableElement);
   }
 
@@ -33,11 +36,12 @@ function displayMessage(timestamp, role, message, table) {
   Prism.highlightAllUnder(chatMessages);
 }
 
+
 function fetchAnswer(question) {
   // Add the spinner next to the send button
   sendBtn.insertAdjacentHTML(
     "afterend",
-    '<div id="loading-spinner" class="text-center mt-3"><div class="spinner"></div></div>'
+    '<div id="loading-spinner" class="spinner-container text-center mt-3"><div class="spinner"></div></div>'
   );
 
   fetch("/api/generate-text", {
@@ -58,7 +62,6 @@ function fetchAnswer(question) {
       spinner.remove();
 
       displayMessage(timestamp, "assistant", formattedResponse, data.table);
-      // tableContent.innerHTML = data.table;
     })
     .catch((error) => {
       console.error("Error fetching answer:", error);
@@ -69,6 +72,7 @@ function fetchAnswer(question) {
       spinner.remove();
     });
 }
+
 
 sendBtn.addEventListener("click", () => {
   const question = userInput.value.trim();
@@ -91,3 +95,4 @@ userInput.addEventListener("keydown", (event) => {
     }
   }
 });
+

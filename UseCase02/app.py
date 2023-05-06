@@ -60,7 +60,7 @@ def generate_text():
     answer = response.choices[0].message['content'].strip()
     table = closest_area[['link', 'name', 'section']].to_frame().transpose().to_html(classes='table table-striped', index=False, columns=['link', 'name', 'section'])
     result = f"Answer: {answer}"
-    print(table)
+    print(answer)
     timestamp = datetime.now().strftime("%I:%M:%S %p")
     return jsonify({"response": result, "table": table, "timestamp": timestamp})
 
