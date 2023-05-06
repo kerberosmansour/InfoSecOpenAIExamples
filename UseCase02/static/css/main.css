@@ -10,7 +10,7 @@ body {
 }
 
 .chat-container {
-  width: 600px;
+  width: 1000px;
   display: flex;
   flex-direction: column;
   margin-top: 5rem; /* Add this line to move the chat container a bit further down from the top */
