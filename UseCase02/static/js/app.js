@@ -58,7 +58,7 @@ function fetchAnswer(question) {
       spinner.remove();
 
       displayMessage(timestamp, "assistant", formattedResponse, data.table);
-      tableContent.innerHTML = data.table;
+      // tableContent.innerHTML = data.table;
     })
     .catch((error) => {
       console.error("Error fetching answer:", error);
