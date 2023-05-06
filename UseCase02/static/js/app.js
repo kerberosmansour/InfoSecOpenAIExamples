@@ -37,8 +37,7 @@ function fetchAnswer(question) {
       .then((data) => {
           const timestamp = data.timestamp;
           const formattedResponse = processResponse(data.response);
-          displayMessage(timestamp, "assistant", formattedResponse);
-          tableContent.innerHTML = data.table;
+          displayMessage(timestamp, "assistant", formattedResponse + "<br>" + data.table);
       })
       .catch((error) => {
           console.error("Error fetching answer:", error);
