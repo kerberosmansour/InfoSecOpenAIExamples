@@ -1,0 +1,92 @@
+/* main.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.chat-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.chat-messages {
+  background-color: #e3f2fd;
+  border: .5px solid #4f4f4f; /* Added for better visibility */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  overflow-y: auto;
+  max-height: 1000px;
+  margin-bottom: 1rem;
+}
+
+.chat-input {
+  background-color: #c8e6c9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#user-input {
+  flex-grow: 1;
+  margin-right: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: .5px solid #101010;
+}
+
+#user-input::placeholder {
+  color: #0c0c0c !important;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #1976d2;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.message-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.user .message-card {
+  margin-left: auto;
+  background-color: #e3f2fd;
+  height: 100%;
+}
+
+.assistant .message-card {
+  margin-right: auto;
+  background-color: #c8e6c9;
+}
