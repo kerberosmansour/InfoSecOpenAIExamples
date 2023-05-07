@@ -9,17 +9,25 @@ body {
   margin: 0;
 }
 
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .chat-container {
   width: 1000px;
   display: flex;
   flex-direction: column;
-  margin-top: 5rem; /* Add this line to move the chat container a bit further down from the top */
+  margin-top: 5rem;
 }
 
 .chat-messages {
   background-color: #e3f2fd;
+  border: .5px solid #4f4f4f; /* Added for better visibility */
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   padding: 1rem;
   overflow-y: auto;
   max-height: 1000px;
@@ -35,12 +43,16 @@ body {
   justify-content: space-between;
 }
 
-.user-input {
+#user-input {
   flex-grow: 1;
   margin-right: 1rem;
   border-radius: 5px;
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: .5px solid #101010;
+}
+
+#user-input::placeholder {
+  color: #0c0c0c !important;
 }
 
 .spinner {
@@ -78,5 +90,3 @@ body {
   margin-right: auto;
   background-color: #c8e6c9;
 }
-
-

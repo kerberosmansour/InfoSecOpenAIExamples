@@ -32,7 +32,7 @@ function displayMessage(timestamp, role, message, data) {
     tableElement.classList.add("table-responsive", "bg-light", "shadow", "p-3", "rounded", "mt-3");
   
     const link = data[0].link;
-    const text = `The above answer was based on the ${data[2].link} section of ${data[1].link}`;
+    const text = `*Reference: The above answer was based on the ${data[2].link} section of ${data[1].link}`;
   
     const anchor = document.createElement("a");
     anchor.href = link;
