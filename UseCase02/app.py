@@ -18,7 +18,7 @@ CORS(app)
 script_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_directory)
 
-df = pd.read_parquet('url_contents_embedded.parquet')
+df = pd.read_parquet('url_contents.openai.parquet')
 # Read the data from your DataFrame
 embeddings = np.stack(df["ada_v2_embedding"].to_numpy())
 
