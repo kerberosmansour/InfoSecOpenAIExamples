@@ -239,5 +239,6 @@ While predicting the future is always a risky business, it's exciting to imagine
 * PWC Research Article
 * Microsoft Documentation
 * OpenAI Cookbooks
+* [AI Voice Phishing Video](https://twitter.com/60Minutes/status/1660428419438354435)
 * [The Practical Guides for Large Language Models ](https://github.com/Mooler0410/LLMsPracticalGuide)
 
