@@ -1,6 +1,35 @@
 ## Hello World Demo & Best Practices
 We'll begin with a simple 'Hello World' demo using **ChatGPT**. The demo will cover best practices, one of which is to avoid prompt injection. For example, user input should be delimited using three backticks to prevent bypassing input guardrails.
 
+## How did we get here - LLM Evolutionary Tree
+![History
+](History.jpg)
+
+## Timeline
+![Image](timeline.png)
+
+## Transformer Genealogy
+![](Genealogy.jpg)
+
+what is an XSS and can you show me a code example and how to remediate it (with code)
+
+
+* In this example the prompt is limited to serve a specific puurpose
+* In this case it's to summerise product reviews
+* Without any limitations these prompts can be ignored
+
+# Prompt Best Practicies
+* Write Clear and specific instructions
+* Use delimiters e.g. Triple backticks: ```
+* Ask for a structured output like JSON/HTML 
+* Ask to check conditions are satisified, check assumptions required to do the task
+* "Few-shot prompting" Give successful examples of completing tasks then ask model to perform the task
+* Give the model time to think
+* Specify the steps to complete a task
+* Instruct the model to work out it's own solution before rushing to a conclusion
+
+
+
 ## Understanding GPT's Knowledge
 You may wonder, if ChatGPT 4 isn't aware of GPT 4, how can it reveal confidential information? The explanation lies in the **human feedback model**, a layer of reinforced learning on top of ChatGPT. This model refines the output, not by having your code, but by imitating the patterns in your code due to developer training.
 
@@ -203,10 +232,13 @@ While predicting the future is always a risky business, it's exciting to imagine
 | Penetration Testing| 1. Summarise penetration test findings<br>2. Summarise vulnerability data<br>3. Summarise social engineering test results | 1. Expand on a penetration test plan<br>2. Expand on an attack scenario<br>3. Expand on exploit development | 1. Infer potential attack vectors from network data<br>2. Infer vulnerable systems from scan data<br>3. Infer the effectiveness of security controls from test data | 1. Transform network data into attack graphs<br>2. Transform vulnerability data into prioritised remediation tasks<br>3. Transform penetration test data into security recommendations |
 
 # Apendix B References
-* Deeplearning article
+* Deeplearning.ai article & training
+* OWASP LLM Top Ten
 * CS50 GPT-4 Presentation
 * Team8 Generative AI Risk Article
 * PWC Research Article
 * Microsoft Documentation
 * OpenAI Cookbooks
+* [AI Voice Phishing Video](https://twitter.com/60Minutes/status/1660428419438354435)
+* [The Practical Guides for Large Language Models ](https://github.com/Mooler0410/LLMsPracticalGuide)
 
