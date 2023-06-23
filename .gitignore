@@ -131,3 +131,4 @@ dmypy.json
 # Pyre type checker
 test.txt
 test.py
+Presentation/gcp_sa_secret.json
